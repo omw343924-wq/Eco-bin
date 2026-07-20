@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | EcoBin - E-Waste Recycling</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for clean eco & contact icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="contact-container">
+        <!-- Left Side: Interactive Form -->
+        <div class="contact-form-section">
+            <h2>Let's Recycle Right</h2>
+            <p class="subtitle">Got old electronics? Reach out to schedule a pickup or ask us anything about e-waste disposal.</p>
+            
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="user-type">I am a...</label>
+                        <select id="user-type" name="user-type">
+                            <option value="individual">Individual / Household</option>
+                            <option value="business">Business / Corporate</option>
+                            <option value="partner">Recycling Facility</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="waste-type">Primary E-Waste Item</label>
+                        <select id="waste-type" name="waste-type">
+                            <option value="phones">Phones & Tablets</option>
+                            <option value="computers">Laptops & PCs</option>
+                            <option value="appliances">Home Appliances</option>
+                            <option value="cables">Batteries & Chargers</option>
+                            <option value="other">Other / Mixed Load</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Estimated Quantity & Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us what you're dropping off or ask your question here..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span>Send Message</span>
+                    <i class="fa-solid fa-leaf"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Right Side: Info Panel -->
+        <div class="contact-info-section">
+            <div class="info-card">
+                <h3>EcoBin Hub</h3>
+                <p>Drop off your items directly or drop us a line.</p>
+                
+                <div class="info-details">
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>100 Green Tech Way, Silicon Valley, CA</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>support@ecobin.com</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <span>Mon - Sat: 8:00 AM - 6:00 PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Eco Impact Callout Box -->
+            <div class="impact-box">
+                <h4><i class="fa-solid fa-earth-americas"></i> Our Collective Impact</h4>
+                <p>Every smartphone recycled recovers valuable gold, copper, and silver while keeping toxic lead out of our landfills.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
