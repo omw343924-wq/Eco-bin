@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Awareness</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar-brand img {
+            width: 130px;
+            height: auto;
+        }
+
+        .nav-link {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .b1:hover {
+            background-color: rgb(8, 8, 215);
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        @media (max-width:768px) {
+
+            .hero-img {
+                height: 220px;
+            }
+
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .btn-group-mobile {
+                width: 100%;
+            }
+
+            .btn-group-mobile .btn {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+
+        .main2 {
+            display: flex;
+        }
+
+        .dustimg {
+            height: 120px;
+            width: 00px;
+        }
+
+        .c1 {
+
+            margin-top: 10px;
+            background-color: rgb(205, 252, 205);
+            color: black;
+        }
+
+        .waste-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .waste-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        .card-icon {
+            max-height: 70px;
+            object-fit: contain;
+        }
+
+
+
+        /* Added responsive improvements */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .awareness-card,
+        .action-card {
+            background: #e8f8e8 !important;
+            border-radius: 15px;
+        }
+
+        .card,
+        .waste-card {
+            transition: all .3s ease
+        }
+
+        .card:hover,
+        .waste-card:hover {
+            transform: translateY(-5px);
+        }
+
+        @media(max-width:768px) {
+            h2 {
+                text-align: center;
+                font-size: 1.6rem
+            }
+
+            .card {
+                margin-bottom: 15px
+            }
+
+            .card-title {
+                font-size: 1rem
+            }
+
+            .card-text {
+                font-size: .9rem
+            }
+
+            .navbar-brand img {
+                width: 100px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+
+            <a class="navbar-brand" href="#">
+                <img src="ecobin logo.png" alt="Logo">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav mx-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about us.html">About Us</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+
+                            Services
+
+                        </a>
+
+                        <ul class="dropdown-menu">
+
+                            <li><a class="dropdown-item" href="#">E-Waste Pickup</a></li>
+                            <li><a class="dropdown-item" href="#">Drop-Off Centers</a></li>
+                            <li><a class="dropdown-item" href="#">E-Waste Recycling</a></li>
+                            <li><a class="dropdown-item" href="#">Collection Drives</a></li>
+                            <li><a class="dropdown-item" href="#">Secure Data Destruction</a></li>
+                            <li><a class="dropdown-item" href="#">Corporate E-Waste Disposal</a></li>
+                            <li><a class="dropdown-item" href="#">Repair & Refurbishment</a></li>
+                            <li><a class="dropdown-item" href="#">Awareness Programs</a></li>
+                            <li><a class="dropdown-item" href="#">Track Pickup Status</a></li>
+                            <li><a class="dropdown-item" href="#">FAQs</a></li>
+
+                        </ul>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+
+                </ul>
+
+                <!-- Buttons -->
+                <div class="d-lg-flex gap-2 btn-group-mobile">
+
+                    <a href="new.html" class="text-decoration-none">
+                        <button class="btn btn-success px-4 b1">
+                            Sign In
+                        </button>
+                    </a>
+
+                    <a href="Loginpage.html" class="text-decoration-none">
+                        <button class="btn btn-success px-4 b1">
+                            Login
+                        </button>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Banner Image -->
+    <div class="container-fluid p-0">
+
+        <img src="awaremain.jpeg" class="img-fluid" style="width: 100%; height: 450px;">
+
+    </div>
+
+
+    <div class="container my-4">
+        <div class="row g-4 justify-content-center">
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card waste-card h-100 shadow-sm border-0">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-4 text-center p-3">
+                            <img src="dustimg.png" class="img-fluid card-icon" alt="E-Waste Icon">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body ps-0">
+                                <h5 class="card-title fw-bold text-success mb-1">Recycling e-waste saves resources</h5>
+                                <p class="card-text text-secondary mb-0">
+                                    <small>Tonnes of E-Waste generated globally every year.</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card waste-card h-100 shadow-sm border-0">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-4 text-center p-3">
+                            <img src="recycle2.img.png" class="img-fluid card-icon" alt="Recycle Icon">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body ps-0">
+                                <h5 class="card-title fw-bold text-success mb-1">Only 20%</h5>
+                                <p class="card-text text-secondary mb-0">
+                                    <small>of e-waste is formally collected and recycled.</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card waste-card h-100 shadow-sm border-0">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-4 text-center p-3">
+                            <img src="toxicimg.jpg" class="img-fluid card-icon" alt="E-Waste Icon">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body ps-0">
+                                <h5 class="card-title fw-bold text-success mb-1">Recycling e-waste saves resources</h5>
+                                <p class="card-text text-secondary mb-0">
+                                    <small>that harms our health and environment.</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card waste-card h-100 shadow-sm border-0">
+                    <div class="row g-0 align-items-center h-100">
+                        <div class="col-4 text-center p-3">
+                            <img src="greenleaf.png" class="img-fluid card-icon" alt="Recycle Icon">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body ps-0">
+                                <h5 class="card-title fw-bold text-success mb-1">Recycling e-waste saves resources</h5>
+                                <p class="card-text text-secondary mb-0">
+                                    <small>and reduces pollution for a sustainable future.</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="container py-3">
+        <h2 class="h4 fw-bold mb-4" style="color: #0e5b0e;">Why Awareness Matters</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+
+            <div class="col">
+                <div class="card awareness-card h-100 border-0 text-center shadow-sm p-2">
+                    <div class="d-flex justify-content-center pt-2">
+                        <img src="protecthealth.png" class="card-img-top border rounded-circle" alt="Protect Health"
+                            style="width: 70px; height: 70px; object-fit: contain;">
+                    </div>
+                    <div class="card-body px-2 py-2">
+                        <h5 class="card-title fw-bold fs-6 mb-1">Protect Health</h5>
+                        <p class="card-text text-muted small mb-0">Improper disposal causes serious health issues.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card awareness-card h-100 border-0 text-center shadow-sm p-2">
+                    <div class="d-flex justify-content-center pt-2">
+                        <img src="saveenviron.png" class="card-img-top border rounded-circle" alt="Save Environment"
+                            style="width: 70px; height: 70px; object-fit: contain;">
+                    </div>
+                    <div class="card-body px-2 py-2">
+                        <h5 class="card-title fw-bold fs-6 mb-1">Save Environment</h5>
+                        <p class="card-text text-muted small mb-0">Prevent soil, water and air pollution.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card awareness-card h-100 border-0 text-center shadow-sm p-2">
+                    <div class="d-flex justify-content-center pt-2">
+                        <img src="conserveressource.png" class="card-img-top border rounded-circle"
+                            alt="Conserve Resources" style="width: 70px; height: 70px; object-fit: contain;">
+                    </div>
+                    <div class="card-body px-2 py-2">
+                        <h5 class="card-title fw-bold fs-6 mb-1">Conserve Resources</h5>
+                        <p class="card-text text-muted small mb-0">E-waste contains valuable recyclable materials.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card awareness-card h-100 border-0 text-center shadow-sm p-2">
+                    <div class="d-flex justify-content-center pt-2">
+                        <img src="build resp.png" class="card-img-top border rounded-circle" alt="Build Responsibility"
+                            style="width: 70px; height: 70px; object-fit: contain;">
+                    </div>
+                    <div class="card-body px-2 py-2">
+                        <h5 class="card-title fw-bold fs-6 mb-1">Build Responsibility</h5>
+                        <p class="card-text text-muted small mb-0">Small actions today create a big impact tomorrow.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="container py-4">
+        <h2 class="h4 fw-bold mb-4" style="color: #0e5b0e;">What Can You Do?</h2>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-5 g-3 text-center">
+
+            <div class="col">
+                <div class="card action-card h-100 border-0 shadow-sm p-3">
+                    <div class="d-flex justify-content-center pt-2 mb-2">
+                        <img src="reduce.png" alt="Reduce" style="width: 60px; height: 60px; object-fit: contain;">
+                    </div>
+                    <div class="card-body p-0">
+                        <h5 class="card-title fw-bold fs-6 text-dark mb-1">Reduce</h5>
+                        <p class="card-text text-muted small mb-0">Buy only what you need. Choose durable products.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card action-card h-100 border-0 shadow-sm p-3">
+                    <div class="d-flex justify-content-center pt-2 mb-2">
+                        <img src="reuse.png" alt="Reuse" style="width: 60px; height: 60px; object-fit: contain;">
+                    </div>
+                    <div class="card-body p-0">
+                        <h5 class="card-title fw-bold fs-6 text-dark mb-1">Reuse</h5>
+                        <p class="card-text text-muted small mb-0">Extend the life of devices. Repair whenever possible.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card action-card h-100 border-0 shadow-sm p-3">
+                    <div class="d-flex justify-content-center pt-2 mb-2">
+                        <img src="Recycle.png" alt="Recycle" style="width: 60px; height: 60px; object-fit: contain;">
+                    </div>
+                    <div class="card-body p-0">
+                        <h5 class="card-title fw-bold fs-6 text-dark mb-1">Recycle</h5>
+                        <p class="card-text text-muted small mb-0">Give your e-waste to authorized recycling centers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card action-card h-100 border-0 shadow-sm p-3">
+                    <div class="d-flex justify-content-center pt-2 mb-2">
+                        <img src="Spreadawareness.png" alt="Spread Awareness"
+                            style="width: 60px; height: 60px; object-fit: contain;">
+                    </div>
+                    <div class="card-body p-0">
+                        <h5 class="card-title fw-bold fs-6 text-dark mb-1">Spread Awareness</h5>
+                        <p class="card-text text-muted small mb-0">Educate your family, friends and community about
+                            e-waste.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card action-card h-100 border-0 shadow-sm p-3">
+                    <div class="d-flex justify-content-center pt-2 mb-2">
+                        <img src="takeaction.png" alt="Take Action"
+                            style="width: 60px; height: 60px; object-fit: contain;">
+                    </div>
+                    <div class="card-body p-0">
+                        <h5 class="card-title fw-bold fs-6 text-dark mb-1">Take Action</h5>
+                        <p class="card-text text-muted small mb-0">Your responsible action can make the planet a better
+                            place.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
