@@ -3,26 +3,27 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>My Inventory | EcoBin</title>
+    <title>EcoBin | My E-Waste</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
-    <style>
-        body {
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<style>
+      body {
             background: #f5f7f9;
             font-family: 'Segoe UI', sans-serif;
         }
 
         /* ================= NAVBAR ================= */
 
-          .navbar {
+        .navbar {
             height: 75px;
             background: #fff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
@@ -63,33 +64,6 @@
 
         .dropdown-toggle::after {
             margin-left: 8px;
-        }
-
-        /* ================= OFFCANVAS ================= */
-
-        .offcanvas {
-            width: 340px;
-        }
-
-        .profile-img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #22c55e;
-        }
-
-        .info-box {
-            background: #fff;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
-        }
-
-        .info-box i {
-            color: #22c55e;
-            margin-right: 8px;
         }
 
         /* ================= OFFCANVAS ================= */
@@ -168,14 +142,140 @@
             font-size: 18px;
 
         }
-    </style>
 
-</head>
+        /* Keep right side horizontal */
+        .navbar .ms-auto {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 12px;
+        }
+
+        /* Prevent profile button from breaking */
+        .profile-btn,
+        .btn-success {
+            white-space: nowrap;
+        }
+
+        /* Tablet */
+        @media (max-width:768px) {
+
+            .btn-success {
+                padding: 8px 14px;
+                font-size: 14px;
+            }
+
+        }
+
+        /* Mobile */
+        @media (max-width:576px) {
+
+            .btn-success span {
+                display: none;
+            }
+
+            .btn-success {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .btn-success i {
+                margin: 0;
+                font-size: 20px;
+            }
+
+        }
+
+           body {
+            background: #f7f9fb;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .dashboard-card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: .3s;
+            height: 100%;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: #edf9ef;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .icon-box i {
+            font-size: 32px;
+            color: #198754;
+        }
+
+        .card-title {
+            color: #555;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .card-value {
+            color: #198754;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            background: #edf9ef;
+            color: #198754;
+            padding: 7px 12px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            gap: 6px;
+        }
+
+        @media(max-width:768px){
+
+            .icon-box{
+                width:60px;
+                height:60px;
+            }
+
+            .icon-box i{
+                font-size:26px;
+            }
+
+            .card-title{
+                font-size:16px;
+            }
+
+            .card-value{
+                font-size:30px;
+            }
+
+        }
+</style>
 
 <body>
-
-    <!-- ================= NAVBAR ================= -->
-     <nav class="navbar navbar-expand-lg">
+  
+    <nav class="navbar navbar-expand-lg">
 
         <div class="container-fluid">
 
@@ -307,32 +407,31 @@
                     Dashboard
                 </a>
 
-                
-                  <a href="#" class="list-group-item list-group-item-action">
-                    <i class="bi bi-person me-2"></i>
+               
+
+                <a href="myinventory.html" class="list-group-item list-group-item-action">
+                    <i class="bi bi-box-seam me-2"></i>
                     Add Inventory
                 </a>
 
-              
-
-                <a href="myewaste.html" class="list-group-item list-group-item-action">
+                <a href="#" class="list-group-item list-group-item-action">
                     <i class="bi bi-recycle me-2"></i>
                     My E-Waste
                 </a>
 
-                 <a href="Sheduledpickup.html" class="list-group-item list-group-item-action">
+
+                  <a href="Sheduledpickup.html" class="list-group-item list-group-item-action">
                     <i class="fa-solid fa-calendar"></i>
                    Schedule-Pickup
                 </a>
-
-                
-
+               
                 <a href="Recyclingcenters.html" class="list-group-item list-group-item-action">
                     <i class="bi bi-geo-alt me-2"></i>
                     Recycling Centers
                 </a>
 
-               
+
+
                 <a href="#" class="list-group-item list-group-item-action">
                     <i class="bi bi-gear me-2"></i>
                     Settings
@@ -394,11 +493,8 @@
                 <strong>Email</strong>
 
                 <p class="mb-0 mt-2">
-
                     omw343924@gmail.com
-
                 </p>
-
             </div>
 
             <div class="info-box text-start">
@@ -427,273 +523,257 @@
 
     </div>
 
-    <!-- ================= PAGE CONTENT ================= -->
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center">
 
-    <!-- ================= PAGE CONTENT ================= -->
+            <h1 class="fw-bold">
+                My E-Waste 🌿
+            </h1>
 
-    <div class="container dashboard">
+            <a href="myinventory.html" <button class="btn btn-success">
+                <i class="bi bi-plus-lg"></i>
+                Add New E-Waste
+                </button></a>
+
+        </div>
+
+        <p class="text-muted">
+            Manage and track all your e-waste items.
+        </p>
+
+        <!-- Tabs -->
+
+        <div class="mb-4">
+
+            <button class="btn btn-success">All Items (12)</button>
+
+            <button class="btn btn-light">
+                Ready For Pickup
+            </button>
+
+            <button class="btn btn-light">
+                Recycled
+            </button>
+
+            <button class="btn btn-light">
+                Pending
+            </button>
+
+        </div>
+
+        <!-- Cards -->
+
+        <div class="row g-4 mb-4 main">
+
+            <div class="col-lg-3 col-md-6 ">
+
+                <div class="card stat-card" id="card">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-box fs-1 text-success"></i>
+
+                        <h2>12</h2>
+
+                        <p>Total Items</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card stat-card" id="card">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-tree fs-1 text-success"></i>
+
+                        <h2>24.8 kg</h2>
+
+                        <p>Total Weight</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card stat-card" id="card">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-recycle fs-1 text-success"></i>
+
+                        <h2>7</h2>
+
+                        <p>Recycled</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card stat-card" id="card">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-clock fs-1 text-success"></i>
+
+                        <h2>5</h2>
+
+                        <p>Pending Pickup</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Search -->
 
         <div class="row mb-4">
 
-            <div class="col-lg-8">
+            <div class="col-md-6">
 
-                <h2 class="fw-bold">
-
-                    📦 My Inventory
-
-                </h2>
-
-                <p class="text-muted">
-
-                    Manage all your electronic waste items before scheduling a pickup.
-
-                </p>
+                <input type="text" class="form-control" placeholder="Search E-Waste...">
 
             </div>
 
-           
+            <div class="col-md-3">
+
+                <select class="form-select">
+
+                    <option>Newest</option>
+
+                    <option>Oldest</option>
+
+                </select>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <button class="btn btn-outline-success w-100">
+                    Filter
+                </button>
+
+            </div>
+
         </div>
-    </div>
-    <div class="card shadow-sm border-0 rounded-4 p-4 mb-4">
 
-        <h4 class="mb-4">
+        <!-- Table -->
 
-            Add Inventory Item
+        <center><div class="container-fluid">
 
-        </h4>
+            <table class="table align-middle">
 
-        <form>
+                <thead>
 
-            <div class="row">
+                    <tr>
 
-                <div class="col-md-6 mb-3">
+                        <th>Item</th>
 
-                    <label class="form-label">
+                        <th>Category</th>
 
-                        Item Name
+                        <th>Qty</th>
 
-                    </label>
-
-                    <input type="text" class="form-control" placeholder="Eg.old laptops">
-
-                </div>
-
-                <div class="col-md-6 mb-3">
-
-                    <label class="form-label">
-
-                        Category
-
-                    </label>
-
-                    <select class="form-select">
-
-                        <option>Mobile</option>
-
-                        <option>Laptop</option>
-
-                        <option>Battery</option>
-
-                        <option>Printer</option>
-
-                        <option>Computer</option>
-
-                        <option>Television</option>
-
-                        <option>Others..</option>
+                        <th>Weight</th>
 
 
-                    </select>
+                    </tr>
 
-                </div>
+                </thead>
 
-            </div>
+                <tbody>
 
-            <div class="row">
+                    <tr>
 
-                <div class="col-md-4 mb-3">
+                        <td>Smartphone</td>
 
-                    <label class="form-label">
+                        <td>Mobile</td>
 
-                        Quantity
+                        <td>2</td>
 
-                    </label>
+                        <td>0.4 Kg</td>
 
-                    <input type="number" class="form-control" value="1">
+                      
+                    </tr>
 
-                </div>
+                    <tr>
 
-                <div class="col-md-4 mb-3">
+                        <td>Laptop</td>
 
-                    <label class="form-label">
+                        <td>Computer</td>
 
-                        Weight (kg)
+                        <td>1</td>
 
-                    </label>
+                        <td>2.2 Kg</td>
 
-                    <input type="number" class="form-control">
+                       
+                    </tr>
 
-                </div>
+                    <tr>
 
-                <div class="col-md-4 mb-3">
+                        <td>Earphones</td>
 
-                    <label class="form-label">
+                        <td>Accessory</td>
 
-                        Condition
+                        <td>3</td>
 
-                    </label>
+                        <td>0.1 Kg</td>
 
-                    <select class="form-select">
+                       
 
-                        <option>Working</option>
+                    </tr>
 
-                        <option>Damaged</option>
+                    <tr>
 
-                        <option>Broken</option>
+                        <td>Mouse</td>
 
-                    </select>
+                        <td>Hardware</td>
 
-                </div>
+                        <td>6</td>
+
+                        <td>0.2 Kg</td>
+
+                       
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div></center>
+
+        <!-- Footer -->
+         <br>
+         
+
+        <center>
+            <div class="footer-banner mt-4">
+
+                🌿 Together, we can build a cleaner and greener tomorrow.
 
             </div>
-
-            <div class="mb-3">
-
-                <label class="form-label">
-
-                    Description
-
-                </label>
-
-                <textarea class="form-control" rows="3"></textarea>
-
-            </div>
-
-            <div class="mb-3">
-
-                <label class="form-label">
-
-                    Upload Image
-
-                </label>
-
-                <input type="file" class="form-control">
-
-            </div>
-
-            <button class="btn btn-success">
-
-                <i class="bi bi-plus-circle"></i>
-
-                Add Item
-
-            </button>
-
-        </form>
+        </center>
 
     </div>
 
-    <!-- ================= STATISTICS ================= -->
-
-    <div class="row mb-4">
-
-        <div class="col-lg-4 col-md-6 mb-3">
-
-            <div class="card border-0 shadow-sm rounded-4 p-4">
-
-                <div class="d-flex justify-content-between align-items-center">
-
-                    <div>
-
-                        <h6 class="text-muted">
-                            Total Items
-                        </h6>
-
-                        <h2 class="fw-bold">
-                            15
-                        </h2>
-
-                    </div>
-
-                    <div class="bg-success bg-opacity-10 rounded-circle p-3">
-
-                        <i class="bi bi-box-seam text-success fs-2"></i>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-3">
-
-            <div class="card border-0 shadow-sm rounded-4 p-4">
-
-                <div class="d-flex justify-content-between align-items-center">
-
-                    <div>
-
-                        <h6 class="text-muted">
-                            Pending Pickup
-                        </h6>
-
-                        <h2 class="fw-bold">
-                            5
-                        </h2>
-
-                    </div>
-
-                    <div class="bg-warning bg-opacity-10 rounded-circle p-3">
-
-                        <i class="bi bi-truck text-warning fs-2"></i>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-3">
-
-            <div class="card border-0 shadow-sm rounded-4 p-4">
-
-                <div class="d-flex justify-content-between align-items-center">
-
-                    <div>
-
-                        <h6 class="text-muted">
-                            Total Weight
-                        </h6>
-
-                        <h2 class="fw-bold">
-                            32 kg
-                        </h2>
-
-                    </div>
-
-                    <div class="bg-primary bg-opacity-10 rounded-circle p-3">
-
-                        <i class="bi bi-recycle text-primary fs-2"></i>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
     </div>
 
-
-    <!-- Bootstrap JS -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    </div>
+    </div>
 </body>
 
 </html>
