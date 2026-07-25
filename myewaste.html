@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>EcoBin | My E-Waste</title>
+
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<style>
+      body {
+            background: #f5f7f9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 75px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+        }
+
+        .menu-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
+
+        .notification-btn {
+            position: relative;
+            font-size: 22px;
+            color: #444;
+            border: none;
+            background: transparent;
+        }
+
+        .notification-dot {
+            width: 10px;
+            height: 10px;
+            background: #22c55e;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            border: 2px solid #fff;
+        }
+
+        .profile-img-small {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #22c55e;
+        }
+
+        .dropdown-toggle::after {
+            margin-left: 8px;
+        }
+
+        /* ================= OFFCANVAS ================= */
+
+        .offcanvas {
+            width: 340px;
+        }
+
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #22c55e;
+        }
+
+        .info-box {
+            background: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+        }
+
+        .info-box i {
+            color: #22c55e;
+            margin-right: 8px;
+        }
+
+        /* ================= CONTENT ================= */
+
+        .dashboard {
+            padding: 40px;
+        }
+
+        .card-demo {
+            border: none;
+            border-radius: 15px;
+            background: #fff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
+            padding: 30px;
+        }
+
+        /* Sidebar */
+
+        #sidebarMenu {
+            width: 280px;
+        }
+
+        #sidebarMenu .list-group-item {
+
+            padding: 16px 25px;
+            border: none;
+            font-size: 17px;
+            transition: .3s;
+
+        }
+
+        #sidebarMenu .list-group-item:hover {
+
+            background: #f1fdf5;
+            color: #198754;
+
+        }
+
+        #sidebarMenu .active {
+
+            border-radius: 10px;
+            margin: 10px;
+            color: #fff;
+
+        }
+
+        #sidebarMenu i {
+
+            font-size: 18px;
+
+        }
+
+        /* Keep right side horizontal */
+        .navbar .ms-auto {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 12px;
+        }
+
+        /* Prevent profile button from breaking */
+        .profile-btn,
+        .btn-success {
+            white-space: nowrap;
+        }
+
+        /* Tablet */
+        @media (max-width:768px) {
+
+            .btn-success {
+                padding: 8px 14px;
+                font-size: 14px;
+            }
+
+        }
+
+        /* Mobile */
+        @media (max-width:576px) {
+
+            .btn-success span {
+                display: none;
+            }
+
+            .btn-success {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .btn-success i {
+                margin: 0;
+                font-size: 20px;
+            }
+
+        }
+
+           body {
+            background: #f7f9fb;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .dashboard-card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: .3s;
+            height: 100%;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: #edf9ef;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .icon-box i {
+            font-size: 32px;
+            color: #198754;
+        }
+
+        .card-title {
+            color: #555;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .card-value {
+            color: #198754;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            background: #edf9ef;
+            color: #198754;
+            padding: 7px 12px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            gap: 6px;
+        }
+
+        @media(max-width:768px){
+
+            .icon-box{
+                width:60px;
+                height:60px;
+            }
+
+            .icon-box i{
+                font-size:26px;
+            }
+
+            .card-title{
+                font-size:16px;
+            }
+
+            .card-value{
+                font-size:30px;
+            }
+
+        }
+</style>
+
+<body>
+  
+    <nav class="navbar navbar-expand-lg">
+
+        <div class="container-fluid">
+
+            <!-- Left -->
+
+            <div class="d-flex align-items-center">
+
+                <button class="btn btn-light menu-btn me-3" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+
+                    <i class="bi bi-list fs-4"></i>
+
+                </button>
+
+                <h3 class="text-success fw-bold m-0 d-none d-md-block">
+                    EcoBin
+                </h3>
+
+            </div>
+
+
+
+
+            <!-- Right Side -->
+            <div class="ms-auto d-flex align-items-center flex-nowrap">
+
+                <!-- Notification -->
+                <button class="btn position-relative me-3 border-0 bg-transparent">
+                    <i class="bi bi-bell fs-4"></i>
+
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                        99+
+                    </span>
+                </button>
+
+                <!-- Profile Button -->
+                <button class="btn btn-success d-flex align-items-center rounded-pill px-3 py-2"
+                    data-bs-toggle="offcanvas" data-bs-target="#profileSidebar">
+
+                    <i class="bi bi-person-circle fs-5 me-2"></i>
+
+                    <span class="d-none d-md-inline">
+                        Om Waghmare
+                    </span>
+
+                </button>
+
+            </div>
+
+
+
+
+            <ul class="dropdown-menu dropdown-menu-end shadow">
+
+                <li>
+
+                    <button class="dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#profileSidebar">
+
+                        <i class="bi bi-person-circle me-2"></i>
+
+                        View Profile
+
+                    </button>
+
+                </li>
+
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+
+                <li>
+
+                    <a class="dropdown-item" href="#">
+
+                        <i class="bi bi-gear me-2"></i>
+
+                        Settings
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a class="dropdown-item text-danger" href="#">
+
+                        <i class="bi bi-box-arrow-right me-2"></i>
+
+                        Logout
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+            </li>
+
+            </ul>
+
+        </div>
+
+        </div>
+
+
+
+    </nav>
+    <!-- Sidebar Offcanvas -->
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu">
+
+        <div class="offcanvas-header">
+
+            <h4 class="text-success fw-bold">
+                EcoBin
+            </h4>
+
+            <button class="btn-close" data-bs-dismiss="offcanvas">
+            </button>
+
+        </div>
+
+        <div class="offcanvas-body p-0">
+
+            <div class="list-group list-group-flush">
+
+                <a href="UserDash.html" class="list-group-item list-group-item-action active bg-success border-0">
+                    <i class="bi bi-house-door me-2"></i>
+                    Dashboard
+                </a>
+
+               
+
+                <a href="myinventory.html" class="list-group-item list-group-item-action">
+                    <i class="bi bi-box-seam me-2"></i>
+                    Add Inventory
+                </a>
+
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="bi bi-recycle me-2"></i>
+                    My E-Waste
+                </a>
+
+
+                  <a href="Sheduledpickup.html" class="list-group-item list-group-item-action">
+                    <i class="fa-solid fa-calendar"></i>
+                   Schedule-Pickup
+                </a>
+               
+                <a href="Recyclingcenters.html" class="list-group-item list-group-item-action">
+                    <i class="bi bi-geo-alt me-2"></i>
+                    Recycling Centers
+                </a>
+
+
+
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="bi bi-gear me-2"></i>
+                    Settings
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= PROFILE OFFCANVAS ================= -->
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="profileSidebar">
+
+        <div class="offcanvas-header">
+
+            <h4 class="text-success fw-bold">
+
+                EcoBin Profile
+
+            </h4>
+
+            <button class="btn-close" data-bs-dismiss="offcanvas">
+            </button>
+
+        </div>
+
+        <div class="offcanvas-body text-center">
+
+            <img src="OM-PROFILE.jpeg" class="profile-img mb-3" alt="Profile">
+
+            <h4>Om Waghmare</h4>
+
+            <p class="text-muted">
+                EcoBin User
+            </p>
+
+            <hr>
+
+            <div class="info-box text-start">
+
+                <i class="bi bi-geo-alt-fill"></i>
+
+                <strong>Address</strong>
+
+                <p class="mb-0 mt-2">
+
+                    Nashik, Maharashtra, India
+
+                </p>
+
+            </div>
+
+            <div class="info-box text-start">
+
+                <i class="bi bi-envelope-fill"></i>
+
+                <strong>Email</strong>
+
+                <p class="mb-0 mt-2">
+                    omw343924@gmail.com
+                </p>
+            </div>
+
+            <div class="info-box text-start">
+
+                <i class="bi bi-telephone-fill"></i>
+
+                <strong>Phone</strong>
+
+                <p class="mb-0 mt-2">
+
+                    +91 8080326943
+
+                </p>
+
+            </div>
+
+            <button class="btn btn-success w-100 mt-3">
+
+                <i class="bi bi-pencil-square me-2"></i>
+
+                Edit Profile
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center">
+
+            <h1 class="fw-bold">
+                My E-Waste 🌿
+            </h1>
+
+            <a href="myinventory.html" <button class="btn btn-success">
+                <i class="bi bi-plus-lg"></i>
+                Add New E-Waste
+                </button></a>
+
+        </div>
+
+        <p class="text-muted">
+            Manage and track all your e-waste items.
+        </p>
+
+        <!-- Tabs -->
+
+        <div class="mb-4">
+
+            <button class="btn btn-success">All Items (12)</button>
+
+            <button class="btn btn-light">
+                Ready For Pickup
+            </button>
+
+            <button class="btn btn-light">
+                Recycled
+            </button>
+
+            <button class="btn btn-light">
+                Pending
+            </button>
+
+        </div>
+
+        <!-- Cards -->
+
+        <div class="row g-4 mb-4 main">
+
+            <div class="col-lg-3 col-md-6 ">
+
+                <div class="card stat-card" id="card">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-box fs-1 text-success"></i>
+
+                        <h2>12</h2>
+
+                        <p>Total Items</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card stat-card" id="card">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-tree fs-1 text-success"></i>
+
+                        <h2>24.8 kg</h2>
+
+                        <p>Total Weight</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card stat-card" id="card">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-recycle fs-1 text-success"></i>
+
+                        <h2>7</h2>
+
+                        <p>Recycled</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card stat-card" id="card">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-clock fs-1 text-success"></i>
+
+                        <h2>5</h2>
+
+                        <p>Pending Pickup</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Search -->
+
+        <div class="row mb-4">
+
+            <div class="col-md-6">
+
+                <input type="text" class="form-control" placeholder="Search E-Waste...">
+
+            </div>
+
+            <div class="col-md-3">
+
+                <select class="form-select">
+
+                    <option>Newest</option>
+
+                    <option>Oldest</option>
+
+                </select>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <button class="btn btn-outline-success w-100">
+                    Filter
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Table -->
+
+        <center><div class="container-fluid">
+
+            <table class="table align-middle">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Item</th>
+
+                        <th>Category</th>
+
+                        <th>Qty</th>
+
+                        <th>Weight</th>
+
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Smartphone</td>
+
+                        <td>Mobile</td>
+
+                        <td>2</td>
+
+                        <td>0.4 Kg</td>
+
+                      
+                    </tr>
+
+                    <tr>
+
+                        <td>Laptop</td>
+
+                        <td>Computer</td>
+
+                        <td>1</td>
+
+                        <td>2.2 Kg</td>
+
+                       
+                    </tr>
+
+                    <tr>
+
+                        <td>Earphones</td>
+
+                        <td>Accessory</td>
+
+                        <td>3</td>
+
+                        <td>0.1 Kg</td>
+
+                       
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Mouse</td>
+
+                        <td>Hardware</td>
+
+                        <td>6</td>
+
+                        <td>0.2 Kg</td>
+
+                       
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div></center>
+
+        <!-- Footer -->
+         <br>
+         
+
+        <center>
+            <div class="footer-banner mt-4">
+
+                🌿 Together, we can build a cleaner and greener tomorrow.
+
+            </div>
+        </center>
+
+    </div>
+
+    </div>
+
+    </div>
+    </div>
+</body>
+
+</html>

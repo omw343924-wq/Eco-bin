@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoBin Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
+        integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+    <style>
+        body {
+            background: #f5f7f9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 75px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+        }
+
+        .menu-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
+
+        .notification-btn {
+            position: relative;
+            font-size: 22px;
+            color: #444;
+            border: none;
+            background: transparent;
+        }
+
+        .notification-dot {
+            width: 10px;
+            height: 10px;
+            background: #22c55e;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            border: 2px solid #fff;
+        }
+
+        .profile-img-small {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #22c55e;
+        }
+
+        .dropdown-toggle::after {
+            margin-left: 8px;
+        }
+
+        /* ================= OFFCANVAS ================= */
+
+        .offcanvas {
+            width: 340px;
+        }
+
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #22c55e;
+        }
+
+        .info-box {
+            background: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+        }
+
+        .info-box i {
+            color: #22c55e;
+            margin-right: 8px;
+        }
+
+        /* ================= CONTENT ================= */
+
+        .dashboard {
+            padding: 40px;
+        }
+
+        .card-demo {
+            border: none;
+            border-radius: 15px;
+            background: #fff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
+            padding: 30px;
+        }
+
+        /* Sidebar */
+
+        #sidebarMenu {
+            width: 280px;
+        }
+
+        #sidebarMenu .list-group-item {
+
+            padding: 16px 25px;
+            border: none;
+            font-size: 17px;
+            transition: .3s;
+
+        }
+
+        #sidebarMenu .list-group-item:hover {
+
+            background: #f1fdf5;
+            color: #198754;
+
+        }
+
+        #sidebarMenu .active {
+
+            border-radius: 10px;
+            margin: 10px;
+            color: #fff;
+
+        }
+
+        #sidebarMenu i {
+
+            font-size: 18px;
+
+        }
+
+        /* Keep right side horizontal */
+        .navbar .ms-auto {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 12px;
+        }
+
+        /* Prevent profile button from breaking */
+        .profile-btn,
+        .btn-success {
+            white-space: nowrap;
+        }
+
+        /* Tablet */
+        @media (max-width:768px) {
+
+            .btn-success {
+                padding: 8px 14px;
+                font-size: 14px;
+            }
+
+        }
+
+        /* Mobile */
+        @media (max-width:576px) {
+
+            .btn-success span {
+                display: none;
+            }
+
+            .btn-success {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .btn-success i {
+                margin: 0;
+                font-size: 20px;
+            }
+
+        }
+
+        body {
+            background: #f7f9fb;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .dashboard-card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: .3s;
+            height: 100%;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: #edf9ef;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .icon-box i {
+            font-size: 32px;
+            color: #198754;
+        }
+
+        .card-title {
+            color: #555;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .card-value {
+            color: #198754;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            background: #edf9ef;
+            color: #198754;
+            padding: 7px 12px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            gap: 6px;
+        }
+
+        @media(max-width:768px) {
+
+            .icon-box {
+                width: 60px;
+                height: 60px;
+            }
+
+            .icon-box i {
+                font-size: 26px;
+            }
+
+            .card-title {
+                font-size: 16px;
+            }
+
+            .card-value {
+                font-size: 30px;
+            }
+
+        }
+
+        .eco-card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
+            transition: .3s;
+            overflow: hidden;
+        }
+
+        .eco-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+        }
+
+        .eco-header {
+            background: linear-gradient(90deg, #198754, #39b86f);
+            color: #fff;
+            padding: 18px;
+        }
+
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            background: #e8f8ec;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+
+        .icon-circle i {
+            font-size: 34px;
+            color: #198754;
+        }
+
+        .tip-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 18px;
+        }
+
+        .tip-text {
+            color: #6c757d;
+            line-height: 1.8;
+            margin-top: 10px;
+        }
+
+        .tip-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .tip-list li {
+            margin-bottom: 12px;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .tip-list i {
+            color: #198754;
+            margin-right: 10px;
+        }
+
+        .learn-btn {
+            border-radius: 30px;
+            padding: 10px 28px;
+            font-weight: 600;
+        }
+
+        @media(max-width:768px) {
+
+            .tip-title {
+                font-size: 20px;
+            }
+
+            .tip-text {
+                font-size: 14px;
+            }
+
+            .icon-circle {
+                width: 60px;
+                height: 60px;
+            }
+
+            .icon-circle i {
+                font-size: 28px;
+            }
+
+        }
+
+        #schedule a:hover {
+            background-color: blue;
+        }
+
+        .eco-footer {
+            background: linear-gradient(90deg, #eef9f0, #f8fcf9);
+            border: 1px solid #d9f0df;
+            border-radius: 20px;
+            padding: 20px 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, .05);
+        }
+
+        .footer-icon {
+            width: 60px;
+            height: 60px;
+            background: #e8f8ec;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .footer-icon i {
+            font-size: 30px;
+            color: #198754;
+        }
+
+        .eco-footer h6 {
+            font-size: 20px;
+        }
+
+        .eco-footer p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        @media(max-width:768px) {
+
+            .eco-footer {
+                text-align: center;
+                padding: 18px;
+            }
+
+            .eco-footer .d-flex {
+                flex-direction: column;
+                align-items: center !important;
+            }
+
+            .footer-icon {
+                margin-right: 0 !important;
+                margin-bottom: 15px;
+            }
+
+            .eco-footer h6 {
+                font-size: 18px;
+            }
+
+            .eco-footer p {
+                font-size: 14px;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg">
+
+        <div class="container-fluid">
+
+
+            <div class="d-flex align-items-center">
+
+                <button class="btn btn-light menu-btn me-3" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+
+                    <i class="bi bi-list fs-4"></i>
+
+                </button>
+
+                <h3 class="text-success fw-bold m-0 d-none d-md-block">
+                    EcoBin
+                </h3>
+
+            </div>
+
+
+
+
+           
+            <div class="ms-auto d-flex align-items-center flex-nowrap">
+
+                <!-- Notification -->
+                <button class="btn position-relative me-3 border-0 bg-transparent">
+                    <i class="bi bi-bell fs-4"></i>
+
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                        99+
+                    </span>
+                </button>
+
+                <button class="btn btn-success d-flex align-items-center rounded-pill px-3 py-2"
+                    data-bs-toggle="offcanvas" data-bs-target="#profileSidebar">
+
+                    <i class="bi bi-person-circle fs-5 me-2"></i>
+
+                    <span class="d-none d-md-inline">
+                        Om Waghmare
+                    </span>
+
+                </button>
+
+            </div>
+
+
+
+
+            
+            </li>
+
+            </ul>
+
+        </div>
+
+        </div>
+
+
+
+    </nav>
+    
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu">
+
+        <div class="offcanvas-header">
+
+            <h4 class="text-success fw-bold">
+                EcoBin
+            </h4>
+
+            <button class="btn-close" data-bs-dismiss="offcanvas">
+            </button>
+
+        </div>
+
+        <div class="offcanvas-body p-0">
+
+            <div class="list-group list-group-flush">
+
+                <a href="#" class="list-group-item list-group-item-action active bg-success border-0">
+                    <i class="bi bi-house-door me-2"></i>
+                    Dashboard
+                </a>
+
+
+
+                <a href="myinventory.html" class="list-group-item list-group-item-action">
+                    <i class="bi bi-box-seam me-2"></i>
+                    Add Inventory
+                </a>
+
+                <a href="myewaste.html" class="list-group-item list-group-item-action">
+                    <i class="bi bi-recycle me-2"></i>
+                    My E-Waste
+                </a>
+
+                <a href="Sheduledpickup.html" class="list-group-item list-group-item-action">
+                    <i class="fa-solid fa-calendar"></i>
+                    Schedule-Pickup
+                </a>
+
+
+
+                <a href="Recyclingcenters.html" class="list-group-item list-group-item-action">
+                    <i class="bi bi-geo-alt me-2"></i>
+                    Recycling Centers
+                </a>
+
+
+
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="bi bi-gear me-2"></i>
+                    Settings
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="profileSidebar">
+
+        <div class="offcanvas-header">
+
+            <h4 class="text-success fw-bold">
+
+                EcoBin Profile
+
+            </h4>
+
+            <button class="btn-close" data-bs-dismiss="offcanvas">
+            </button>
+
+        </div>
+
+        <div class="offcanvas-body text-center">
+
+            <img src="OM-PROFILE.jpeg" class="profile-img mb-3" alt="Profile">
+
+            <h4>Om Waghmare</h4>
+
+            <p class="text-muted">
+                EcoBin User
+            </p>
+
+            <hr>
+
+            <div class="info-box text-start">
+
+                <i class="bi bi-geo-alt-fill"></i>
+
+                <strong>Address</strong>
+
+                <p class="mb-0 mt-2">
+
+                    Nashik, Maharashtra, India
+
+                </p>
+
+            </div>
+
+            <div class="info-box text-start">
+
+                <i class="bi bi-envelope-fill"></i>
+
+                <strong>Email</strong>
+
+                <p class="mb-0 mt-2">
+                    omw343924@gmail.com
+                </p>
+            </div>
+
+            <div class="info-box text-start">
+
+                <i class="bi bi-telephone-fill"></i>
+
+                <strong>Phone</strong>
+
+                <p class="mb-0 mt-2">
+
+                    +91 8080326943
+
+                </p>
+
+            </div>
+
+            <button class="btn btn-success w-100 mt-3">
+
+                <i class="bi bi-pencil-square me-2"></i>
+
+                Edit Profile
+
+            </button>
+
+        </div>
+
+    </div>
+
+    
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 hi">
+                <h1><b>Welcome Back! 🌿</b></h1>
+                <h2 style="font-family: Arial, Helvetica, sans-serif;">Let's recycle for a greener future..</h2>
+                <br>
+                <br><br><br>
+
+
+
+            </div>
+            <div class="col-md-6">
+                <img src="chatgpt.png" class="img-fluid" width="650px" height="450px">
+            </div>
+        </div>
+
+
+    </div>
+
+    </div>
+
+
+    <div class="container py-5">
+
+        <div class="row g-4">
+
+            <!-- Card 1 -->
+            <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="card dashboard-card">
+                    <div class="card-body p-4">
+
+                        <div class="d-flex">
+
+                            <div class="icon-box">
+                                <i class="bi bi-recycle"></i>
+                            </div>
+
+                            <div class="ms-3">
+
+                                <div class="card-title">
+                                    Total E-Waste Recycled
+                                </div>
+
+                                <div class="card-value">
+                                    24.8 kg
+                                </div>
+
+                                <div class="status">
+                                    <i class="bi bi-arrow-up"></i>
+                                    12% from last month
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+          
+            <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="card dashboard-card">
+                    <div class="card-body p-4">
+
+                        <div class="d-flex">
+
+                            <div class="icon-box">
+                                <i class="bi bi-truck"></i>
+                            </div>
+
+                            <div class="ms-3">
+
+                                <div class="card-title">
+                                    Pickup Requests
+                                </div>
+
+                                <div class="card-value">
+                                    08
+                                </div>
+
+                                <div class="status">
+                                    <i class="bi bi-arrow-up"></i>
+                                    2 this month
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="card dashboard-card">
+                    <div class="card-body p-4">
+
+                        <div class="d-flex">
+
+                            <div class="icon-box">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+
+                            <div class="ms-3">
+
+                                <div class="card-title">
+                                    Recycling Centers
+                                </div>
+
+                                <div class="card-value">
+                                    05
+                                </div>
+
+                                <div class="text-muted">
+                                    Find centers
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+           
+
+            <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="card dashboard-card">
+                    <div class="card-body p-4">
+
+                        <div class="d-flex align-items-center">
+
+                            <div class="icon-box">
+                                <i class="bi bi-check-circle-fill"></i>
+                            </div>
+
+                            <div class="ms-3">
+
+                                <div class="card-title">
+                                    Completed Pickups
+                                </div>
+
+                                <div class="card-value">
+                                    18
+                                </div>
+
+                                <div class="status">
+                                    <i class="bi bi-arrow-up"></i>
+                                    3 Completed Today
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="container py-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-5 col-md-6">
+
+                <div class="card eco-card">
+
+                    <div class="eco-header">
+                        <h4 class="mb-0">
+                            <i class="bi bi-lightbulb-fill me-2"></i>
+                            Eco Tips
+                        </h4>
+                    </div>
+
+                    <div class="card-body text-center p-4">
+
+                        <div class="icon-circle">
+                            <i class="bi bi-recycle"></i>
+                        </div>
+
+                        <h3 class="tip-title">
+                            Recycle Smarter ♻️
+                        </h3>
+
+                        <p class="tip-text">
+                            Always remove batteries, chargers, and accessories before
+                            disposing of electronic devices. This improves recycling efficiency
+                            and keeps hazardous materials out of landfills.
+                        </p>
+
+                        <ul class="tip-list text-start">
+                            <li><i class="bi bi-check-circle-fill"></i>Separate batteries from devices.</li>
+
+                            <li><i class="bi bi-check-circle-fill"></i>Keep e-waste clean and dry.</li>
+
+                            <li><i class="bi bi-check-circle-fill"></i>Donate working electronics whenever possible.
+                            </li>
+
+                            <li><i class="bi bi-check-circle-fill"></i>Use authorized EcoBin recycling centers.</li>
+                        </ul>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-lg-5 col-md-6">
+
+    <div class="card eco-card">
+
+        <div class="eco-header">
+            <h4 class="mb-0">
+                <i class="bi bi-lightbulb-fill me-2"></i>
+                Eco Tips
+            </h4>
+        </div>
+
+        <div class="card-body text-center p-4">
+
+            <div class="icon-circle">
+                <i class="bi bi-pc-display"></i>
+            </div>
+
+            <h3 class="tip-title">
+                Extend Device Life 🌱
+            </h3>
+
+            <p class="tip-text">
+                Before replacing your electronics, consider repairing, upgrading,
+                or donating them. Extending the life of devices helps reduce
+                e-waste and conserves valuable natural resources.
+            </p>
+
+            <ul class="tip-list text-start">
+
+                <li>
+                    <i class="bi bi-check-circle-fill"></i>
+                    Repair devices instead of replacing them.
+                </li>
+
+                <li>
+                    <i class="bi bi-check-circle-fill"></i>
+                    Donate working gadgets to schools or NGOs.
+                </li>
+
+                <li>
+                    <i class="bi bi-check-circle-fill"></i>
+                    Delete personal data before recycling.
+                </li>
+
+                <li>
+                    <i class="bi bi-check-circle-fill"></i>
+                    Choose rechargeable batteries whenever possible.
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+        </div>
+    </div>
+    <footer>
+     
+        <div class="container-fluid mt-4">
+            <div class="eco-footer">
+
+                <div class="d-flex align-items-center flex-wrap">
+
+                    <div class="footer-icon me-3">
+                        <img src="ecobinlogo.png" class="img-fluid">
+                    </div>
+
+                    <div>
+                        <h6 class="mb-1 fw-bold text-success">
+                            Together, We Can Build a Greener Tomorrow
+                        </h6>
+
+                        <p class="mb-0 text-muted">
+                            Thank you for choosing EcoBin. Every recycled device helps create a cleaner,
+                            healthier, and more sustainable future.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>
