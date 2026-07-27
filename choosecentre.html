@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
+        integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background: #f5f7f9;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    .navbar {
+        height: 75px;
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+    }
+
+    .menu-btn {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+    }
+
+    .notification-btn {
+        position: relative;
+        font-size: 22px;
+        color: #444;
+        border: none;
+        background: transparent;
+    }
+
+    .notification-dot {
+        width: 10px;
+        height: 10px;
+        background: #22c55e;
+        border-radius: 50%;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        border: 2px solid #fff;
+    }
+
+    .profile-img-small {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #22c55e;
+    }
+
+    .dropdown-toggle::after {
+        margin-left: 8px;
+    }
+
+    /* ================= OFFCANVAS ================= */
+
+    .offcanvas {
+        width: 340px;
+    }
+
+    .profile-img {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #22c55e;
+    }
+
+    .info-box {
+        background: #fff;
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+    }
+
+    .info-box i {
+        color: #22c55e;
+        margin-right: 8px;
+    }
+
+    /* ================= CONTENT ================= */
+
+    .dashboard {
+        padding: 40px;
+    }
+
+    .card-demo {
+        border: none;
+        border-radius: 15px;
+        background: #fff;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
+        padding: 30px;
+    }
+
+    /* Sidebar */
+
+    #sidebarMenu {
+        width: 280px;
+    }
+
+    #sidebarMenu .list-group-item {
+
+        padding: 16px 25px;
+        border: none;
+        font-size: 17px;
+        transition: .3s;
+
+    }
+
+    #sidebarMenu .list-group-item:hover {
+
+        background: #f1fdf5;
+        color: #198754;
+
+    }
+
+    #sidebarMenu .active {
+
+        border-radius: 10px;
+        margin: 10px;
+        color: #fff;
+
+    }
+
+    #sidebarMenu i {
+
+        font-size: 18px;
+
+    }
+
+    /* Keep right side horizontal */
+    .navbar .ms-auto {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 12px;
+    }
+
+    /* Prevent profile button from breaking */
+    .profile-btn,
+    .btn-success {
+        white-space: nowrap;
+    }
+
+    /* Tablet */
+    @media (max-width:768px) {
+
+        .btn-success {
+            padding: 8px 14px;
+            font-size: 14px;
+        }
+
+    }
+
+    /* Mobile */
+    @media (max-width:576px) {
+
+        .btn-success span {
+            display: none;
+        }
+
+        .btn-success {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-success i {
+            margin: 0;
+            font-size: 20px;
+        }
+
+    }
+
+    body {
+        background: #f7f9fb;
+        font-family: "Segoe UI", sans-serif;
+    }
+
+    .dashboard-card {
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: .3s;
+        height: 100%;
+    }
+
+    .dashboard-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .icon-box {
+        width: 70px;
+        height: 70px;
+        background: #edf9ef;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .icon-box i {
+        font-size: 32px;
+        color: #198754;
+    }
+
+    .card-title {
+        color: #555;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    .card-value {
+        color: #198754;
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .status {
+        display: inline-flex;
+        align-items: center;
+        background: #edf9ef;
+        color: #198754;
+        padding: 7px 12px;
+        border-radius: 30px;
+        font-size: 14px;
+        font-weight: 500;
+        gap: 6px;
+    }
+
+    @media(max-width:768px) {
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+        }
+
+        .icon-box i {
+            font-size: 26px;
+        }
+
+        .card-title {
+            font-size: 16px;
+        }
+
+        .card-value {
+            font-size: 30px;
+        }
+
+    }
+
+    .eco-card {
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
+        transition: .3s;
+        overflow: hidden;
+    }
+
+    .eco-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+    }
+
+    .eco-header {
+        background: linear-gradient(90deg, #198754, #39b86f);
+        color: #fff;
+        padding: 18px;
+    }
+
+    .icon-circle {
+        width: 70px;
+        height: 70px;
+        background: #e8f8ec;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+
+    .icon-circle i {
+        font-size: 34px;
+        color: #198754;
+    }
+
+    .tip-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 18px;
+    }
+
+    .tip-text {
+        color: #6c757d;
+        line-height: 1.8;
+        margin-top: 10px;
+    }
+
+    .tip-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+    }
+
+    .tip-list li {
+        margin-bottom: 12px;
+        color: #555;
+        font-size: 15px;
+    }
+
+    .tip-list i {
+        color: #198754;
+        margin-right: 10px;
+    }
+
+    .learn-btn {
+        border-radius: 30px;
+        padding: 10px 28px;
+        font-weight: 600;
+    }
+
+    @media(max-width:768px) {
+
+        .tip-title {
+            font-size: 20px;
+        }
+
+        .tip-text {
+            font-size: 14px;
+        }
+
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+        }
+
+        .icon-circle i {
+            font-size: 28px;
+        }
+
+    }
+     
+
+        .main-content {
+            padding: 30px;
+        }
+
+        .search-box,
+        .filter-box {
+            border-radius: 12px;
+        }
+
+        .center-card {
+            border-radius: 20px;
+            border: 1px solid #e5e5e5;
+            transition: 0.3s;
+        }
+
+        .center-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .selected-card {
+            border: 2px solid #198754;
+        }
+
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            background: #eaf7ef;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: #198754;
+        }
+
+        .bottom-box {
+            border: 2px solid #d6eadb;
+            border-radius: 20px;
+            background: #f8fff9;
+        }
+    
+</style>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+
+        <div class="container-fluid">
+
+
+            <div class="d-flex align-items-center">
+
+                <button class="btn btn-light menu-btn me-3" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+
+                    <i class="bi bi-list fs-4"></i>
+
+                </button>
+
+                <h3 class="text-success fw-bold m-0 d-none d-md-block">
+                    EcoBin
+                </h3>
+
+            </div>
+
+
+
+
+
+            <div class="ms-auto d-flex align-items-center flex-nowrap">
+
+                <!-- Notification -->
+                <button class="btn position-relative me-3 border-0 bg-transparent">
+                    <i class="bi bi-bell fs-4"></i>
+
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                        99+
+                    </span>
+                </button>
+
+                <button class="btn btn-success d-flex align-items-center rounded-pill px-3 py-2"
+                    data-bs-toggle="offcanvas" data-bs-target="#profileSidebar">
+
+                    <i class="bi bi-person-circle fs-5 me-2"></i>
+
+                    <span class="d-none d-md-inline">
+                        Om Waghmare
+                    </span>
+
+                </button>
+
+            </div>
+
+
+
+
+
+            </li>
+
+            </ul>
+
+        </div>
+
+        </div>
+
+
+
+    </nav>
+
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu">
+
+        <div class="offcanvas-header">
+
+            <h4 class="text-success fw-bold">
+                EcoBin
+            </h4>
+
+            <button class="btn-close" data-bs-dismiss="offcanvas">
+            </button>
+
+        </div>
+
+        <div class="offcanvas-body p-0">
+
+            <div class="list-group list-group-flush">
+
+                <a href="#" class="list-group-item list-group-item-action active bg-success border-0">
+                    <i class="bi bi-house-door me-2"></i>
+                    Dashboard
+                </a>
+
+
+
+                <a href="collectoraddress.html" class="list-group-item list-group-item-action">
+                    <i class="bi bi-box-seam me-2"></i>
+                    Collector Details
+                </a>
+
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="bi bi-recycle me-2"></i>
+                    Choose Center
+                </a>
+
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="fa-solid fa-calendar"></i>
+                    My Pickup's
+                </a>
+
+
+
+
+
+
+
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="bi bi-gear me-2"></i>
+                    Settings
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="profileSidebar">
+
+        <div class="offcanvas-header">
+
+            <h4 class="text-success fw-bold">
+
+                EcoBin Profile
+
+            </h4>
+
+            <button class="btn-close" data-bs-dismiss="offcanvas">
+            </button>
+
+        </div>
+
+        <div class="offcanvas-body text-center">
+
+            <img src="OM-PROFILE.jpeg" class="profile-img mb-3" alt="Profile">
+
+            <h4>Om Waghmare</h4>
+
+            <p class="text-muted">
+                EcoBin User
+            </p>
+
+            <hr>
+
+            <div class="info-box text-start">
+
+                <i class="bi bi-geo-alt-fill"></i>
+
+                <strong>Address</strong>
+
+                <p class="mb-0 mt-2">
+
+                    Nashik, Maharashtra, India
+
+                </p>
+
+            </div>
+
+            <div class="info-box text-start">
+
+                <i class="bi bi-envelope-fill"></i>
+
+                <strong>Email</strong>
+
+                <p class="mb-0 mt-2">
+                    omw343924@gmail.com
+                </p>
+            </div>
+
+            <div class="info-box text-start">
+
+                <i class="bi bi-telephone-fill"></i>
+
+                <strong>Phone</strong>
+
+                <p class="mb-0 mt-2">
+
+                    +91 8080326943
+
+                </p>
+
+            </div>
+
+            <a href="EditProfile.html"> <button class="btn btn-success w-100 mt-3">
+
+                    <i class="bi bi-pencil-square me-2"></i>
+
+                    Edit Profile
+
+                </button></a>
+
+
+        </div>
+
+    </div>
+
+    <div class="container-fluid main-content">
+
+        <!-- Heading -->
+        <div class="row align-items-center mb-4">
+            <div class="col-md-8">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-building text-success fs-1 me-3"></i>
+                    <div>
+                        <h2 class="fw-bold mb-1">Choose Center</h2>
+                        <p class="text-muted mb-0">
+                            Select a centre to collect e-waste from.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 text-center">
+                <img src="png.png" class="img-fluid" width="220" height="100px">
+            </div>
+        </div>
+
+
+        <!-- Cards -->
+        <div class="row g-4">
+
+            <!-- Card 1 -->
+            <div class="col-lg-6">
+                <div class="card center-card selected-card p-4">
+                    <div class="d-flex">
+                        <div class="icon-circle">
+                            <i class="bi bi-building"></i>
+                        </div>
+
+                        <div class="ms-3 flex-grow-1">
+                            <h4 class="fw-bold">Sumago Infotech Pvt.Ltd</h4>
+                            <p class="text-muted">
+                                <i class="bi bi-geo-alt"></i>
+                                Govind Nagar , Nashik
+                            </p>
+
+                            <p>
+                                Provides: Mobile, Laptop, Battery, TV etc.
+                            </p>
+
+                            <p>
+                                <i class="bi bi-clock"></i>
+                                Open: 10:00 AM - 7:00 PM
+                            </p>
+
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button class="btn btn-outline-success">
+                                    Call
+                                </button>
+
+                                <a href="https://maps.app.goo.gl/Q64yZ4DxvnJjDKVk6"><button class="btn btn-outline-success">View Map</button></a>
+                                <a href="https://www.sumagoinfotech.com/home"><button class="btn btn-outline-secondary">Details</button></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-lg-6">
+                <div class="card center-card p-4">
+                    <div class="d-flex">
+                        <div class="icon-circle bg-light text-primary">
+                            <i class="bi bi-building"></i>
+                        </div>
+
+                        <div class="ms-3 flex-grow-1">
+                            <h4 class="fw-bold">Infosys Pvt.Ltd</h4>
+                            <p class="text-muted">
+                                <i class="bi bi-geo-alt"></i>
+                                Hinjawadi , Pune
+                            </p>
+
+                            <p>
+                                Provides: CPU, Printer, Wires etc.
+                            </p>
+
+                            <p>
+                                <i class="bi bi-clock"></i>
+                                Open: 10:00 AM - 7:00 PM
+                            </p>
+
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button class="btn btn-outline-success">Call</button>
+                                <a href="https://maps.app.goo.gl/NrYpDx4N3WJSchZT9"><button class="btn btn-outline-success">View Map</button></a>
+                                <a href="https://www.infosys.com/"><button class="btn btn-outline-secondary">Details</button></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Card 3 -->
+
+            <div class="col-lg-6">
+                <div class="card center-card  p-4">
+                    <div class="d-flex">
+                        <div class="icon-circle">
+                            <i class="bi bi-building"></i>
+                        </div>
+
+                        <div class="ms-3 flex-grow-1">
+                            <h4 class="fw-bold">TCS Pvt.Ltd</h4>
+                            <p class="text-muted">
+                                <i class="bi bi-geo-alt"></i>
+                                   Andheri East , Mumbai
+                            </p>
+
+                            <p>
+                                Provides: Mobile, Laptop, Battery, TV etc.
+                            </p>
+
+                            <p>
+                                <i class="bi bi-clock"></i>
+                                Open: 10:00 AM - 7:00 PM
+                            </p>
+
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button class="btn btn-outline-success">
+                                    Call
+                                </button>
+
+                                <a href="https://maps.app.goo.gl/iCaMD1t7jt4aaxSK8"><button class="btn btn-outline-success">
+                                    View Map
+                                </button></a>
+
+                                <a href="https://www.tcs.com/"><button class="btn btn-outline-secondary">
+                                    Details
+                                </button></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-lg-6">
+                <div class="card center-card p-4">
+                    <div class="d-flex">
+                        <div class="icon-circle bg-light text-primary">
+                            <i class="bi bi-building"></i>
+                        </div>
+
+                        <div class="ms-3 flex-grow-1">
+                            <h4 class="fw-bold">Tech Mahindra Pvt.Ltd</h4>
+                            <p class="text-muted">
+                                <i class="bi bi-geo-alt"></i>
+                                  Mihan , Nagpur
+                            </p>
+
+                            <p>
+                                Provides: CPU, Printer, Wires etc.
+                            </p>
+
+                            <p>
+                                <i class="bi bi-clock"></i>
+                                Open: 10:00 AM - 7:00 PM
+                            </p>
+
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button class="btn btn-outline-success">Call</button>
+                                <a href="https://maps.app.goo.gl/Aenr7BUH9J5V1yHZ6"><button class="btn btn-outline-success">View Map</button></a>
+                                <a href="https://www.techmahindra.com/"><button class="btn btn-outline-secondary">Details</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Selected Center -->
+        <div class="bottom-box p-4 mt-5">
+            <div class="row align-items-center">
+
+                <div class="col-md-6">
+                    <h3 class="text-success fw-bold">
+                        <i class="bi bi-check-circle-fill"></i>
+                        Center Selected Successfully!
+                    </h3>
+
+                    <h5>Sumago Infotech Pvt.Ltd</h5>
+                    <p class="text-muted">Govind Nagar , Nashik</p>
+                </div>
+
+                <div class="col-md-3 text-center">
+                    <h5>Distance</h5>
+                    <h3>3.2 km</h3>
+                </div>
+
+                <div class="col-md-3 text-center">
+                    <h5>Estimated Time</h5>
+                    <h3>12 mins</h3>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
